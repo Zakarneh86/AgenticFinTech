@@ -7,7 +7,8 @@ api_keys = st.secrets['API_KEYS']
 
 os.environ["OPENAI_API_KEY"] = api_keys["OPENAI"]
 os.environ["SERPAPI_API_KEY"] = api_keys["SERPAPI"]
-
+st.write(os.environ["OPENAI_API_KEY"])
+st.write(os.environ["SERPAPI_API_KEY"])
 result = None
 
 st.set_page_config(
