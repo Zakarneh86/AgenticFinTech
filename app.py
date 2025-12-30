@@ -1,5 +1,5 @@
 import streamlit as st
-from backend import run_financial_agent
+#from backend import run_financial_agent
 import time
 import os
 
