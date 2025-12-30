@@ -24,7 +24,7 @@ st.markdown(
 
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
-
+session_id = st.session_state.session_id
 try:
     supabase = create_client(
         st.secrets["SUPABASE"]["url"],
@@ -67,7 +67,7 @@ if run:
     try:
         supabase.table("query_logs").insert({
             "query": user_query,
-            "session_id": st.session_state.session_id
+            "session_id": session_id
         }).execute()
     except:
         pass
