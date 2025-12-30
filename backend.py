@@ -31,12 +31,12 @@ import os
 '''openai_api_key = os.environ["OPENAI_API_KEY"]
 serpapi_api_key= os.environ["SERPAPI_API_KEY"]'''
 
-search_api = SerpAPIWrapper()
-researcher_llm = ChatOpenAI(
+search_api = SerpAPIWrapper(serpapi_api_key=os.environ["SERPAPI_API_KEY"])
+researcher_llm = ChatOpenAI(os.environ["OPENAI_API_KEY"],
     model = 'gpt-5.1',
     temperature= 0
 )
-reporter_llm = ChatOpenAI(
+reporter_llm = ChatOpenAI(os.environ["OPENAI_API_KEY"],
     model = 'gpt-5.1',
     temperature= 0.2
 )
