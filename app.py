@@ -1,12 +1,13 @@
 import streamlit as st
-import backend
 import time
 import os
 
 api_keys = st.secrets['API_KEYS']
-
 os.environ["OPENAI_API_KEY"] = api_keys["openAI"]
 os.environ["SERPAPI_API_KEY"] = api_keys["serpAPI"]
+
+import backend
+
 result = None
 
 st.set_page_config(

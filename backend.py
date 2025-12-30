@@ -28,9 +28,6 @@ import os
 #                                                                                                                   #
 #####################################################################################################################
 ### Web Researcher API, Model and Tool ###
-assert os.environ.get("SERPAPI_API_KEY"), "SERPAPI_API_KEY missing"
-assert os.environ.get("OPENAI_API_KEY"), "OPENAI_API_KEY missing"
-
 search_api = SerpAPIWrapper(serpapi_api_key=os.environ["SERPAPI_API_KEY"])
 researcher_llm = ChatOpenAI(os.environ["OPENAI_API_KEY"],
     model = 'gpt-5.1',
