@@ -9,11 +9,13 @@ os.environ["OPENAI_API_KEY"] = api_keys["openAI"]
 os.environ["SERPAPI_API_KEY"] = api_keys["serpAPI"]
 
 from backend import run_financial_agent
-
-supabase = create_client(
-    st.secrets["SUPABASE"]["url"],
-    st.secrets["SUPABASE"]["service_key"]
-)
+try:
+    supabase = create_client(
+        st.secrets["SUPABASE"]["url"],
+        st.secrets["SUPABASE"]["service_key"]
+    )
+except:
+    pass
 
 
 result = None
@@ -46,9 +48,12 @@ user_query = st.text_area(
 
 run = st.button("Run Analysis", type="primary")
 if run:
-    supabase.table("query_logs").insert({
-        "query": user_query
-    }).execute()
+    try:
+        supabase.table("query_logs").insert({
+            "query": user_query
+        }).execute()
+    except:
+        pass
     if not user_query.strip():
         st.warning("Please enter a financial query.")
         st.stop()
