@@ -6,7 +6,7 @@ api_keys = st.secrets['API_KEYS']
 os.environ["OPENAI_API_KEY"] = api_keys["openAI"]
 os.environ["SERPAPI_API_KEY"] = api_keys["serpAPI"]
 
-import backend
+from backend import run_financial_agent
 
 result = None
 
@@ -48,7 +48,7 @@ if run:
         start = time.time()
 
         try:
-            result = backend.run_financial_agent(user_query)
+            result = run_financial_agent(user_query)
 
             status.update(
                 label=f"Analysis completed in {round(time.time() - start, 2)}s",
