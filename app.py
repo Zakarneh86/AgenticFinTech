@@ -10,6 +10,18 @@ os.environ["OPENAI_API_KEY"] = api_keys["openAI"]
 os.environ["SERPAPI_API_KEY"] = api_keys["serpAPI"]
 
 from backend import run_financial_agent
+
+st.markdown(
+    """
+    <style>
+    header {visibility: hidden;}
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 
