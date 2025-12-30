@@ -1,5 +1,5 @@
 import streamlit as st
-#from backend import run_financial_agent
+import backend
 import time
 import os
 
@@ -11,7 +11,7 @@ st.write(os.environ["OPENAI_API_KEY"])
 st.write(os.environ["SERPAPI_API_KEY"])
 result = None
 
-'''st.set_page_config(
+st.set_page_config(
     page_title="AI Financial Research Agent",
     page_icon="📊",
     layout="wide"
@@ -49,7 +49,7 @@ if run:
         start = time.time()
 
         try:
-            result = run_financial_agent(user_query)
+            result = backend.run_financial_agent(user_query)
 
             status.update(
                 label=f"Analysis completed in {round(time.time() - start, 2)}s",
@@ -91,4 +91,4 @@ if result:
                     if isinstance(content, dict):
                         st.json(content)
                     else:
-                        st.markdown(content)'''
+                        st.markdown(content)
