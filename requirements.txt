@@ -13,4 +13,4 @@ langgraph
 chromadb
 beautifulsoup4
 google-search-results
-subabase
+supabase
