@@ -5,13 +5,13 @@ import os
 
 api_keys = st.secrets['API_KEYS']
 
-os.environ["OPENAI_API_KEY"] = api_keys["OPENAI"]
-os.environ["SERPAPI_API_KEY"] = api_keys["SERPAPI"]
+os.environ["OPENAI_API_KEY"] = api_keys["openAI"]
+os.environ["SERPAPI_API_KEY"] = api_keys["serpAPI"]
 st.write(os.environ["OPENAI_API_KEY"])
 st.write(os.environ["SERPAPI_API_KEY"])
 result = None
 
-st.set_page_config(
+'''st.set_page_config(
     page_title="AI Financial Research Agent",
     page_icon="📊",
     layout="wide"
@@ -91,4 +91,4 @@ if result:
                     if isinstance(content, dict):
                         st.json(content)
                     else:
-                        st.markdown(content)
+                        st.markdown(content)'''
