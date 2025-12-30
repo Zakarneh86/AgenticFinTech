@@ -3,12 +3,16 @@ import time
 import os
 import json
 from supabase import create_client
+import uuid
 
 api_keys = st.secrets['API_KEYS']
 os.environ["OPENAI_API_KEY"] = api_keys["openAI"]
 os.environ["SERPAPI_API_KEY"] = api_keys["serpAPI"]
 
 from backend import run_financial_agent
+if "session_id" not in st.session_state:
+    st.session_state.session_id = str(uuid.uuid4())
+
 try:
     supabase = create_client(
         st.secrets["SUPABASE"]["url"],
@@ -50,7 +54,8 @@ run = st.button("Run Analysis", type="primary")
 if run:
     try:
         supabase.table("query_logs").insert({
-            "query": user_query
+            "query": user_query,
+            "session_id": st.session_state.session_id
         }).execute()
     except:
         pass
